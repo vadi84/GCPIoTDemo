@@ -189,7 +189,7 @@ def parse_command_line_args():
             help=('Expiration time, in minutes, for JWT tokens.'))
     parser.add_argument(
             '--json_data_file',
-            default='data/SampleData.json',
+            default='SampleData.json', #update the data file if necessary
             help='Sample JSON file to stream the data from.')
     return parser.parse_args()
 
