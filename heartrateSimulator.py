@@ -30,7 +30,7 @@ import socket
 import random
 from random import randint
 import json
-import jwt
+import jwt  #use pip2 install python-jwt to install this
 import paho.mqtt.client as mqtt
 
 def get_ip_address():
@@ -156,7 +156,7 @@ def parse_command_line_args():
             default='ES256',
             help='Which encryption algorithm to use to generate the JWT.')
     parser.add_argument(
-            '--cloud_region', default='asia-east1', help='GCP cloud region')
+            '--cloud_region', default='asia-east1', help='GCP cloud region') #change the defaulkt cloud region here or pass the appropriate resion in the command line
     parser.add_argument(
             '--ca_certs',
             default='../.ssh/roots.pem',
@@ -205,7 +205,6 @@ def main():
     sub_topic = 'events' if args.message_type == 'event' else 'state'
 
     mqtt_topic = '/devices/{}/{}'.format(args.device_id, sub_topic)
-    #mqtt_topic = 'projects/iot-heartrate-366108/topics/heartratedata'
 
     jwt_iat = datetime.datetime.utcnow()
     jwt_exp_mins = args.jwt_expires_minutes
